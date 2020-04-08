@@ -1,7 +1,7 @@
 {
     "variables": {
-        "aws_access_key": "AKIAUIEUQ6C24K4LMOGX",
-        "aws_secret_key": "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",
+        "aws_access_key": "",
+        "aws_secret_key": "",
         "region": "ap-northeast-2",
         "ami_name": "{{isotime \"060102-1504\"}}-base-ami"
     },
