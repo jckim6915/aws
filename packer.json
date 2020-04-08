@@ -1,0 +1,31 @@
+{
+    "variables": {
+        "aws_access_key": "AKIAUIEUQ6C24K4LMOGX",
+        "aws_secret_key": "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",
+        "region": "ap-northeast-2",
+        "ami_name": "{{isotime \"060102-1504\"}}-base-ami"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `region`}}",
+            "ami_name": "packer-example-{{timestamp}}",
+            "source_ami": "ami-0e5ec6ec0e7672e12",
+            "vpc_id": "vpc-030eb34f50028abee",
+            "subnet_id": "subnet-03f9b08f072c6bcee",
+            "associate_public_ip_address": true,
+            "instance_type": "t2.micro",
+            "ssh_interface": "public_ip",
+            "ssh_username": "ec2-user",
+            "ami_description": "Amazon Linux Base AMI",
+            "tags": {
+                "Name": "{{user `ami_name` }}",
+                "BaseAMI_Id": "{{ .SourceAMI }}",
+                "BaseAMI_Name": "{{ .SourceAMIName }}",
+                "TYPE": "EC2.ami"
+            }
+        }
+    ]
+}
